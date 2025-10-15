@@ -1,0 +1,26 @@
+{
+  "name": "retro-sign-letters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "watch:sass": "sass --watch scss:css --embed-sources",
+    "build:sass": "sass scss:css --no-source-map",
+    "build": "npm run build:sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iorivilla84/retro-sign-letters.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/iorivilla84/retro-sign-letters/issues"
+  },
+  "homepage": "https://github.com/iorivilla84/retro-sign-letters#readme",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}

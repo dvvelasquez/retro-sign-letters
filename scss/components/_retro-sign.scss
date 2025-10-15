@@ -1,0 +1,79 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.letter-title {
+  color: $white-color;
+  font-size: 72px;
+  text-align: center;
+}
+
+.retro-sign {
+  box-sizing: border-box;
+  margin-bottom: 2vw;
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__text-field {
+    flex: 0 1 100%;
+    padding: 20px;
+    outline: none;
+  }
+
+  &__submit-text {
+    background-color: $yellow-bg;
+    border: none;
+    cursor: pointer;
+    flex: 0 1 100%;
+    padding: 20px;
+
+    &:hover {
+      background-color: color.adjust($yellow-bg, $blackness: 10%);
+    }
+  }
+}
+
+#sign-wrapper {
+  background-color: $black-color;
+  border: 5px double $white-color;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &__img {
+    max-width: 150px;
+    width: 100%;
+    margin-right: 5px;
+  }
+}
+
+#price-wrapper {
+  background-color: $yellow-bg;
+  text-align: center;
+
+  .price-range {
+    color: $black-color;
+  }
+}
+
+/* Media Queries */
+@media screen and (min-width: $beak-point-sm) {
+  .retro-sign {
+
+    &__text-field {
+      flex: 0 1 80%;
+    }
+
+    &__submit-text {
+      flex: 0 1 15%;
+    }
+  }
+}

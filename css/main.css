@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../assets/images/retro_bg.jpg") no-repeat fixed center;
+  background-color: #f8dc06;
+  background-size: cover;
+  font-family: "Bangers", cursive;
+}
+
+h2 {
+  font-size: 50px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.letter-title {
+  color: #ffffff;
+  font-size: 72px;
+  text-align: center;
+}
+
+.retro-sign {
+  box-sizing: border-box;
+  margin-bottom: 2vw;
+}
+.retro-sign__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.retro-sign__text-field {
+  flex: 0 1 100%;
+  padding: 20px;
+  outline: none;
+}
+.retro-sign__submit-text {
+  background-color: #f8dc06;
+  border: none;
+  cursor: pointer;
+  flex: 0 1 100%;
+  padding: 20px;
+}
+.retro-sign__submit-text:hover {
+  background-color: rgb(222.5, 197.4504132231, 6);
+}
+
+#sign-wrapper {
+  background-color: #000000;
+  border: 5px double #ffffff;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  opacity: 0;
+}
+#sign-wrapper.active {
+  opacity: 1;
+}
+#sign-wrapper__img {
+  max-width: 150px;
+  width: 100%;
+  margin-right: 5px;
+}
+
+#price-wrapper {
+  background-color: #f8dc06;
+  text-align: center;
+}
+#price-wrapper .price-range {
+  color: #000000;
+}
+
+/* Media Queries */
+@media screen and (min-width: 576px) {
+  .retro-sign__text-field {
+    flex: 0 1 80%;
+  }
+  .retro-sign__submit-text {
+    flex: 0 1 15%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,18 @@
+@use '../variables' as *;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url("../assets/images/retro_bg.jpg") no-repeat fixed center;
+    background-color: $yellow-bg;
+    background-size: cover;
+    font-family: 'Bangers', cursive;
+}
+
+h2 {
+    font-size: 50px;
+    color: $white-color;
+    text-align: center;
+  }
