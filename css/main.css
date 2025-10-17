@@ -7,17 +7,15 @@ body {
   background-color: #f8dc06;
   background-size: cover;
   font-family: "Bangers", cursive;
+  font-size: 18px;
 }
 
 h2 {
-  font-size: 50px;
-  color: #ffffff;
   text-align: center;
 }
 
 .letter-title {
   color: #ffffff;
-  font-size: 72px;
   text-align: center;
 }
 
@@ -57,10 +55,11 @@ h2 {
 #sign-wrapper.active {
   opacity: 1;
 }
-#sign-wrapper__img {
+
+.retro-sign__img {
   max-width: 150px;
   width: 100%;
-  margin-right: 5px;
+  margin: 15px 10px;
 }
 
 #price-wrapper {
@@ -73,6 +72,9 @@ h2 {
 
 /* Media Queries */
 @media screen and (min-width: 576px) {
+  .letter-title {
+    font-size: 72px;
+  }
   .retro-sign__text-field {
     flex: 0 1 80%;
   }

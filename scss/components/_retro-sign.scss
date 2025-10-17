@@ -3,7 +3,6 @@
 
 .letter-title {
   color: $white-color;
-  font-size: 72px;
   text-align: center;
 }
 
@@ -47,12 +46,12 @@
   &.active {
     opacity: 1;
   }
+}
 
-  &__img {
-    max-width: 150px;
-    width: 100%;
-    margin-right: 5px;
-  }
+.retro-sign__img {
+  max-width: 150px;
+  width: 100%;
+  margin: 15px 10px;
 }
 
 #price-wrapper {
@@ -66,8 +65,11 @@
 
 /* Media Queries */
 @media screen and (min-width: $beak-point-sm) {
-  .retro-sign {
+  .letter-title {
+    font-size: 72px;
+  }
 
+  .retro-sign {
     &__text-field {
       flex: 0 1 80%;
     }

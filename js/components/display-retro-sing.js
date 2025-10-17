@@ -24,7 +24,7 @@ const displayRetroSign = {
         `
     },
     appendThunderImg: () => displayRetroSign.appendImageTemplate('THUNDER', 'gif'),
-    calculateSingPrice: (message) => `<h2 class="price-range mt-5 p-3">$${(message.length * 10).toFixed(2)}</h2>`,
+    calculateSingPrice: (message) => `<h2 class="price-range mt-5 p-3">Your Retro Sign Price is: $${((message.length * 10) + 20).toFixed(2)}</h2>`,
     createRetroSign: (input, container, priceContainer) => {
         container.innerHTML = '';
         const message = input.value.toUpperCase();
@@ -44,6 +44,7 @@ const displayRetroSign = {
             }
 
             container.insertAdjacentHTML('beforeend', displayRetroSign.appendThunderImg());
+            priceContainer.innerHTML = '';
             priceContainer.insertAdjacentHTML('afterbegin', displayRetroSign.calculateSingPrice(message));
         } else {
             container.classList.remove('active');
