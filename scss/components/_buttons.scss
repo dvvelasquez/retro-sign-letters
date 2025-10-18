@@ -1,0 +1,24 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.retro-sign {
+    &__submit-text {
+        background-color: $yellow-bg;
+        border: none;
+        cursor: pointer;
+        flex: 0 1 100%;
+        padding: 20px;
+
+        &:hover {
+            background-color: color.adjust($yellow-bg, $blackness: 10%);
+        }
+    }
+}
+
+@media screen and (min-width: $beak-point-sm) {
+    .retro-sign {
+        &__submit-text {
+        flex: 0 1 15%;
+        }
+    }
+}

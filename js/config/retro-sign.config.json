@@ -1,0 +1,10 @@
+{
+    "retro_sign": {
+        "costPerLetter": 10,
+        "basePrice": 20,
+        "letterExt": "png",
+        "thunderExt": "gif",
+        "thunderImg": "THUNDER",
+        "imageDir": "./assets/images/retro-letters/"
+    }
+}

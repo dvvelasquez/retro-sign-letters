@@ -14,6 +14,22 @@ h2 {
   text-align: center;
 }
 
+.retro-sign__submit-text {
+  background-color: #f8dc06;
+  border: none;
+  cursor: pointer;
+  flex: 0 1 100%;
+  padding: 20px;
+}
+.retro-sign__submit-text:hover {
+  background-color: rgb(222.5, 197.4504132231, 6);
+}
+
+@media screen and (min-width: 576px) {
+  .retro-sign__submit-text {
+    flex: 0 1 15%;
+  }
+}
 .letter-title {
   color: #ffffff;
   text-align: center;
@@ -32,16 +48,6 @@ h2 {
   flex: 0 1 100%;
   padding: 20px;
   outline: none;
-}
-.retro-sign__submit-text {
-  background-color: #f8dc06;
-  border: none;
-  cursor: pointer;
-  flex: 0 1 100%;
-  padding: 20px;
-}
-.retro-sign__submit-text:hover {
-  background-color: rgb(222.5, 197.4504132231, 6);
 }
 
 #sign-wrapper {
@@ -77,9 +83,6 @@ h2 {
   }
   .retro-sign__text-field {
     flex: 0 1 80%;
-  }
-  .retro-sign__submit-text {
-    flex: 0 1 15%;
   }
 }
 
