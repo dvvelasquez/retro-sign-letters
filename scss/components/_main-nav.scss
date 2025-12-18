@@ -1,0 +1,28 @@
+@use '../variables';
+.minicart-link {
+    color: variables.$black-color;
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+        content: "\f07a";
+        color: currentColor;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+    }
+
+    span:not(.badge) {
+        display: none;
+    }
+
+    .badge {
+        background-color: variables.$red-color;
+        border-radius: 50%;
+        color: variables.$white-color;
+        font-size: 12px;
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+        right: -13px;
+        top: -13px;
+    }
+}

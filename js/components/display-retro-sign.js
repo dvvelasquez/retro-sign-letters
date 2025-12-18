@@ -1,5 +1,6 @@
 import { getElement } from "../helper/dom-helper.js";
 import { showMessage } from "../helper/message-helper.js";
+import { hasNumber } from "../helper/input-validations.js";
 
 const displayRetroSign = {
     /**
@@ -54,26 +55,46 @@ const displayRetroSign = {
         return `<h2 class="price-range mt-5 p-3">Your Retro Sign Price is: $${total.toFixed(2)}</h2>`
     },
     /**
+     * Input Event Handler to display new message or error message if the user updates the input field
+     * @param {String} message - The message typed inside the input field
+     * @param {HTMLElement} container - The letters container element
+     * @param {HTMLElement} priceContainer - the price container element
+     * @returns {void}
+     */
+    inputEventHandlers: (message, container, priceContainer) => {
+        if (!hasNumber(message)) {
+            container.innerHTML = '';
+            priceContainer.innerHTML = '';
+        };
+
+        if (hasNumber(message)) {
+            console.log(hasNumber(message));
+            showMessage('Please type in letters only');
+        } else if (!message.length) {
+            container.classList.remove('active');
+            showMessage('Please type in a message');
+        }
+    },
+    /**
      * Creates the Retro Sign to append to the container
      * @param {HTMLInputElement} input - The input field element
-     * @param {HTMLElement} container - The container element
-     * @param {HTMLElement} priceContainer - the target price container element
+     * @param {HTMLElement} container - The letters container element
+     * @param {HTMLElement} priceContainer - the price container element
      * @param {object} configs - The configs app object
      * @returns {string} the html template with the message
      */
     createRetroSign: (input, container, priceContainer, configs) => {
-        const { appConfigs } = configs;
-        if (!appConfigs) return;
-        const imgDir = appConfigs.imageDir;
-        const letterExt = appConfigs.letterExt;
-        const thunderImage = appConfigs.thunderImg;
-        const thunderImageExt = appConfigs.thunderExt;
+        const { retroSignConfigs } = configs;
+        if (!retroSignConfigs) return;
 
-        container.innerHTML = '';
-        priceContainer.innerHTML = '';
-        const message = input.value.toUpperCase().replace(/[^A-Z0-9 ]/g, '');
+        const imgDir = retroSignConfigs.imageDir;
+        const letterExt = retroSignConfigs.letterExt;
+        const thunderImage = retroSignConfigs.thunderImg;
+        const thunderImageExt = retroSignConfigs.thunderExt;
 
-        if (message.length > 0) {
+        const message = input;
+
+        if (message.length > 0 && !hasNumber(message)) {
             container.classList.add('active')
             container.insertAdjacentHTML('afterbegin', displayRetroSign.appendThunderImg(imgDir, thunderImage, thunderImageExt));
 
@@ -86,12 +107,9 @@ const displayRetroSign = {
 
             container.insertAdjacentHTML('beforeend', displayRetroSign.appendThunderImg(imgDir, thunderImage, thunderImageExt));
 
-            const costPerLetter = appConfigs.costPerLetter;
-            const basePrice = appConfigs.basePrice;
+            const costPerLetter = retroSignConfigs.costPerLetter;
+            const basePrice = retroSignConfigs.basePrice;
             priceContainer.insertAdjacentHTML('afterbegin', displayRetroSign.calculateSignPrice(basePrice, message, costPerLetter));
-        } else {
-            container.classList.remove('active');
-            showMessage('Please type in a message');
         }
 
         return message
@@ -105,8 +123,14 @@ const displayRetroSign = {
      * @returns {void}
      */
     renderRetroSign: (input, container, priceContainer, configs) => {
-        if (!input || !container || !priceContainer) return;
-        displayRetroSign.createRetroSign(input, container, priceContainer, configs);
+        if (!input || !container || !priceContainer || !configs) return;
+        const inputMessage = input.value.toUpperCase().replace(/[^A-Z0-9 ]/g, '');
+
+        if (displayRetroSign.inputEventHandlers(inputMessage, container, priceContainer)) {
+            displayRetroSign.inputEventHandlers(inputMessage, container, priceContainer)
+        } else {
+            displayRetroSign.createRetroSign(inputMessage, container, priceContainer, configs);
+        }
     }
 }
 

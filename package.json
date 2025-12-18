@@ -22,5 +22,9 @@
   "homepage": "https://github.com/iorivilla84/retro-sign-letters#readme",
   "devDependencies": {
     "sass": "^1.93.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1"
   }
 }

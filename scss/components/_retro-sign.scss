@@ -1,8 +1,8 @@
-@use '../variables' as *;
+@use '../variables';
 @use 'sass:color';
 
 .letter-title {
-  color: $white-color;
+  color: variables.$white-color;
   text-align: center;
 }
 
@@ -24,8 +24,8 @@
 }
 
 #sign-wrapper {
-    background-color: $black-color;
-    border: 5px double $white-color;
+    background-color: variables.$black-color;
+    border: 5px double variables.$white-color;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -43,16 +43,16 @@
 }
 
 #price-wrapper {
-    background-color: $yellow-bg;
+    background-color: variables.$yellow-bg;
     text-align: center;
 
     .price-range {
-        color: $black-color;
+        color: variables.$black-color;
     }
 }
 
 /* Media Queries */
-@media screen and (min-width: $beak-point-sm) {
+@media screen and (min-width: variables.$beak-point-sm) {
     .letter-title {
         font-size: 72px;
     }
