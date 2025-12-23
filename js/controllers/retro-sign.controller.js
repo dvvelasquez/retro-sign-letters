@@ -4,13 +4,13 @@
  * @returns {Promise} An Object containing the request status, appConfigs objects and code
  */
 const getRetroSignConfigs = async () => {
-    const RetroSignConfigEndPath = './js/config/retro-sign.config.json';
+    const retroSignConfigEndPath = './js/config/retro-sign.config.json';
 
     try {
-        const response = await fetch(RetroSignConfigEndPath);
+        const response = await fetch(retroSignConfigEndPath);
         if(!response.ok) {
             throw new Error(
-                `Failed to fetch ${RetroSignConfigEndPath}: ${response.status} ${response.statusText}`
+                `Failed to fetch ${retroSignConfigEndPath}: ${response.status} ${response.statusText}`
             );
         }
         const jsonResponse = await response.json();
@@ -21,14 +21,14 @@ const getRetroSignConfigs = async () => {
         }
     } catch (error) {
         if (error.name === "SyntaxError") {
-            console.error(`JSON parse error in ${RetroSignConfigEndPath}:`, error.message);
+            console.error(`JSON parse error in ${retroSignConfigEndPath}:`, error.message);
         } else {
-            console.error(`Error fetching ${RetroSignConfigEndPath}:`, error.message);
+            console.error(`Error fetching ${retroSignConfigEndPath}:`, error.message);
         }
 
         return {
             status: 'error',
-            appConfigs: {},
+            retroSignConfigs: {},
             code: 500
         }
     }

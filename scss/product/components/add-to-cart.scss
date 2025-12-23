@@ -1,0 +1,8 @@
+.call-to-actions-wrapper {
+    margin-top: 30px;
+    text-align: center;
+
+    &.active {
+        display: block;
+    }
+}

@@ -30,9 +30,11 @@
     flex-flow: row wrap;
     justify-content: center;
     opacity: 0;
+    visibility: hidden;
 
     &.active {
         opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -43,7 +45,7 @@
 }
 
 #price-wrapper {
-    background-color: variables.$yellow-bg;
+    background-color: variables.$white-color;
     text-align: center;
 
     .price-range {

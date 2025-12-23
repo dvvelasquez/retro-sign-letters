@@ -15,6 +15,25 @@
     }
 }
 
+.add-to-cart {
+    background-color: variables.$yellow-bg;
+    border: none;
+    outline: none;
+    padding: 15px 60px;
+
+    &:hover {
+        background-color: color.adjust(variables.$yellow-bg, $blackness: 10%);
+    }
+
+    &::after {
+        content: "\f07a";
+        color: currentColor;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        margin-left: 10px;
+    }
+}
+
 @media screen and (min-width: variables.$beak-point-sm) {
     .retro-sign {
         &__submit-text {

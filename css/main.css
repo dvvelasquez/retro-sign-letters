@@ -8356,6 +8356,7 @@ h2 {
   color: #000000;
   text-decoration: none;
   position: relative;
+  cursor: pointer;
 }
 .minicart-link::after {
   content: "\f07a";
@@ -8386,6 +8387,23 @@ h2 {
 }
 .retro-sign__submit-text:hover {
   background-color: rgb(222.5, 197.4504132231, 6);
+}
+
+.add-to-cart {
+  background-color: #f8dc06;
+  border: none;
+  outline: none;
+  padding: 15px 60px;
+}
+.add-to-cart:hover {
+  background-color: rgb(222.5, 197.4504132231, 6);
+}
+.add-to-cart::after {
+  content: "\f07a";
+  color: currentColor;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-left: 10px;
 }
 
 @media screen and (min-width: 576px) {
@@ -8420,9 +8438,11 @@ h2 {
   flex-flow: row wrap;
   justify-content: center;
   opacity: 0;
+  visibility: hidden;
 }
 #sign-wrapper.active {
   opacity: 1;
+  visibility: visible;
 }
 
 .retro-sign__img {
@@ -8432,7 +8452,7 @@ h2 {
 }
 
 #price-wrapper {
-  background-color: #f8dc06;
+  background-color: #ffffff;
   text-align: center;
 }
 #price-wrapper .price-range {
@@ -8447,6 +8467,13 @@ h2 {
   .retro-sign__text-field {
     flex: 0 1 80%;
   }
+}
+.call-to-actions-wrapper {
+  margin-top: 30px;
+  text-align: center;
+}
+.call-to-actions-wrapper.active {
+  display: block;
 }
 
 /*# sourceMappingURL=main.css.map */

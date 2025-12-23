@@ -1,5 +1,6 @@
 import { getRetroSignConfigs } from "./controllers/retro-sign.controller.js";
-import { displayRetroSign } from "./components/display-retro-sign.js";
+import { initRetroSignLetters } from "./display-retro-sign.js";
+import { addToCart } from "./components/add-to-cart.js"
 
 /**
  * Initialises the Retro Sign Letters app.
@@ -14,7 +15,8 @@ const initApp = async () => {
         return;
     }
 
-    displayRetroSign.init(configs);
+    initRetroSignLetters(configs);
+    addToCart.innitAddToCart('.add-to-cart-btn');
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

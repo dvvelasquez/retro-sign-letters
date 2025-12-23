@@ -3,6 +3,7 @@
     color: variables.$black-color;
     text-decoration: none;
     position: relative;
+    cursor: pointer;
 
     &::after {
         content: "\f07a";

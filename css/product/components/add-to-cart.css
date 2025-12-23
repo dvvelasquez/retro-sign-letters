@@ -1,0 +1,9 @@
+.call-to-actions-wrapper {
+  margin-top: 30px;
+  text-align: center;
+}
+.call-to-actions-wrapper.active {
+  display: block;
+}
+
+/*# sourceMappingURL=add-to-cart.css.map */
