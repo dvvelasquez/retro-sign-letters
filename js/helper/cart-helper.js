@@ -1,20 +1,26 @@
 import { getElement } from "../helper/dom-helper.js";
-import { cartStorage } from "../controllers/local-storage.controller.js";
-import { miniCart } from "../components/mini-cart.js";
 
 const cartHelper = {
     /**
-     * Updates the Cart Qty badge on the main nav
+     * Updates the cart qty badge in the main nav
+     * @param {Object} cartStorage - the cart item object
+     * @param {String} targetEl - the class selector of the target element
      * @returns {void}
      */
-    updateCartQty: (targetEl) => {
+    updateCartQty: (cartStorage, targetEl) => {
         const cartItems = cartStorage.getItems();
         const qtyBadge = getElement.single(targetEl);
         if (!qtyBadge || !cartItems) return;
 
         qtyBadge.textContent = cartItems.length;
     },
-    updateMiniCartItemsQty: (targetEl) => {
+    /**
+     * Updates the cart items count in the mini cart header and subtotal
+     * @param {Object} cartStorage - the cart item object
+     * @param {String} targetEl - the class selector of the target element
+     * @returns {void}
+     */
+    updateMiniCartItemsQty: (cartStorage, targetEl) => {
         const cartItems = cartStorage.getItems();
         const miniCartItemsQty = getElement.multiple(targetEl);
         if (!miniCartItemsQty.length || !cartItems) return;
@@ -24,6 +30,13 @@ const cartHelper = {
             el.textContent = `${cartItems.length} ${isMultipleItems}`;
         })
     },
+    /**
+     * Creates the mini cart image html template
+     * @param {String} src - The image src url
+     * @param {String} letter - the given letter from the input message
+     * @param {Number} price - the cost per letter
+     * @returns {String} The image html template
+     */
     miniCartImageTemplate: (src, letter, price) => {
         return `<img src="${src}"
             class="card-img-top rounded-0"
@@ -32,6 +45,11 @@ const cartHelper = {
             data-letter-price="${price}"
             loading="lazy">`
     },
+    /**
+     * Builds the product summary data from stored cart items.
+     * @param {Object} storedItems - the local storage object
+     * @returns {Array<Object>} the product items array containing the ID, Images, Title and Total Price
+     */
     getProductDetails: (storedItems) => {
         const updatedCartObj = storedItems;
         if (!updatedCartObj && updatedCartObj === null) return;
@@ -61,6 +79,11 @@ const cartHelper = {
 
         return productSummary;
     },
+    /**
+     * Creates card containing each of the product details
+     * @param {Array<Object>} storedItems - the local storage object
+     * @returns {String} The card item html template
+     */
     productDetailsTemplate: (storedItems) => {
         const productDetails = cartHelper.getProductDetails(storedItems);
         if (!Array.isArray(productDetails)) return;
@@ -94,22 +117,15 @@ const cartHelper = {
             `
         }).join('');
     },
-    removeProductFromCart: (cartObj, targetEl) => {
-        const container = getElement.single(targetEl);
-        if (!container) return;
-
-        container.addEventListener('click', (e) => {
-            const removeBtn = e.target;
-            const productId = removeBtn.dataset.uuid;
-            cartStorage.removeItems(productId);
-
-            container.innerHTML = '';
-            miniCart.renderMiniCart(cartStorage.getItems());
-            miniCart.getProductCost(cartObj, cartStorage.getItems());
-            cartHelper.updateCartQty('.minicart-link .minicart-quantity');
-            cartHelper.updateMiniCartItemsQty('.minicart .items__number');
-        })
-    },
+    /**
+     * Remove the item from storage and retruns updated cart
+     * @param {Object} cartStorage - The local storage handler
+     * @param {string} productId - The item UUID to remove
+     * @returns {Array<Object>} Updated cart items
+     */
+     removeAndUpdateItem: (cartStorage, productId) => {
+        return cartStorage.removeItems(productId);
+    }
 }
 
 export { cartHelper }

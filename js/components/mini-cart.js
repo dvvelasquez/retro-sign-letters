@@ -1,20 +1,31 @@
 import { addToCart } from "./add-to-cart.js"
 import { getElement } from "../helper/dom-helper.js";
 import { cartHelper } from "../helper/cart-helper.js";
-import { productData } from "../controllers/product-page.controller.js"
-import { cartObj } from "../controllers/cart-items-obj.controller.js"
+import { cart } from "../components/cart.js";
 
 const miniCart = {
     /**
-     * Init Mini Cart
+     * Initialises Mini Cart behavior and synchronises cart state with the UI
+     * @param {Object} cartObj - Cart object builder
+     * @param {Object} cartStorage - The local storage object handler
+     * @param {Object} productData - Selected product data and pricing logic
+     * @returns {void}
      */
-    getCart: (cartStorage) => {
-        addToCart.innitAddToCart('.add-to-cart-btn');
-        cartHelper.updateCartQty('.minicart-link .minicart-quantity');
-        miniCart.renderMiniCart(cartStorage.getItems());
-        cartHelper.updateMiniCartItemsQty('.minicart .items__number');
+    getCart: (cartObj, cartStorage, productData) => {
+        addToCart.innitAddToCart(cartObj, cartStorage, productData, '.add-to-cart-btn');
+        cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
+        miniCart.renderMiniCart(cartObj, cartStorage.getItems(), productData);
+        miniCart.getProductCost(cartObj, cartStorage.getItems(), productData);
+        cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
     },
-    getProductCost: (cartObj, items) => {
+    /**
+     * Calculates and renders cart pricing totals including GST
+     * @param {Object} cartObj - Cart object builder
+     * @param {Array<Object>} items - Current cart items
+     * @param {Object} productData - Pricing and GST calculator
+     * @returns {void}
+     */
+    getProductCost: (cartObj, items, productData) => {
         const cartSubtotal = cartObj.cartSubtotalData(items);
         const subTotalWrapper = getElement.single('.sub-total');
         const totalGstWrapper = getElement.single('.total-tax-cost');
@@ -28,7 +39,14 @@ const miniCart = {
         totalAmountWrapper.innerHTML = '';
         totalAmountWrapper.insertAdjacentHTML('afterbegin', `$${items.length ? total.toFixed(2) : 0}`);
     },
-    renderMiniCart: (items) => {
+    /**
+     * Renders the Mini Cart into the UI
+     * @param {Object} cartObj - Cart object builder
+     * @param {Array<Object>} items - Cart items from storage
+     * @param {Object} productData - The product data selected product image info
+     * @returns {void}
+     */
+    renderMiniCart: (cartObj, items, productData) => {
         const productSummaryDetails = cartHelper.productDetailsTemplate(items);
         const productSummaryWrapper = getElement.single('.product-line-item-summary');
         if (!productSummaryWrapper || !productSummaryDetails.length) return;
@@ -36,10 +54,23 @@ const miniCart = {
         productSummaryWrapper.innerHTML = '';
         productSummaryWrapper.insertAdjacentHTML('afterbegin', productSummaryDetails);
 
-        miniCart.getProductCost(cartObj, items);
+        miniCart.getProductCost(cartObj, items, productData);
     },
-    updateMiniCart: (cartObj, targetEl) => {
-        cartHelper.removeProductFromCart(cartObj, targetEl);
+    /**
+     * Updates the Mini Cart after an item has been removed
+     * @param {Object} cartObj - Cart object builder
+     * @param {Object} cartStorage - The local storage object handler
+     * @param {Object} productData - The product data selected product image info
+     * @param {String} targetEl - The class of the target selector (remove btn)
+     * @returns {void}
+     */
+     removeItemAndUpdateMiniCart: (cartObj, cartStorage, productData, targetEl) => {
+        const container = getElement.single(targetEl);
+        if (!container) return;
+
+        container.addEventListener('click', (e) => {
+            cart.handleRemoveItem(cartObj, cartStorage, productData, e);
+        });
     }
 }
 

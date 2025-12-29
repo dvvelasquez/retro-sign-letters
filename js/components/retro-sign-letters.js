@@ -4,8 +4,11 @@ import { createRetroSign } from "../helper/dom-helper.js"
 
 const addRetroSignLetters = {
     /**
-     * Intialise the Retro Letters Sign app
-     * @param {object} configs - The configs app object
+     * Initialises the retro sign generator
+     * @param {HTMLInputElement} inputField - The input field element
+     * @param {HTMLElement} signContainer - The images container
+     * @param {HTMLElement} priceContainer - The container with the total amounts
+     * @param {Object} configs - The configs app object
      * @returns {void}
      */
     init: (inputField, signContainer, priceContainer, configs) => {
@@ -13,16 +16,35 @@ const addRetroSignLetters = {
 
         addRetroSignLetters.renderRetroSign(inputField, signContainer, priceContainer, configs);
     },
+    /**
+     * Calculate the total price for the retro sign letters
+     * @param {String} message - The given message from the input
+     * @param {Number} costPerLetter - The cost per letter
+     * @param {Number} basePrice - The default initial price
+     * @returns {String} The total cost per retro sign letters
+     */
     calculateSignPrice: (message, costPerLetter, basePrice) => {
         const total = (message.length * costPerLetter) + basePrice;
         return total.toFixed(2);
     },
+    /**
+     * Clears the rendered letter images and pricing UI
+     * @param {HTMLElement} container - The image letters container element
+     * @param {HTMLElement} priceContainer - The price container element
+     * @returns {void}
+     */
     emptyMessageAndPriceContainer: (container, priceContainer) => {
         container.innerHTML = '';
         priceContainer.innerHTML = '';
         container.classList.remove('active');
         priceContainer.classList.remove('active');
     },
+    /**
+     * Calculates and append price based on the given message
+     * @param {String} message - the given message from the input field
+     * @param {HTMLElement} priceContainer - The price container element
+     * @param {Object} retroSignConfigs - The retro sign configs obj
+     */
     appendRetroSignPrice: (message, priceContainer, retroSignConfigs) => {
         const basePrice = retroSignConfigs.basePrice;
         const letterPrice = retroSignConfigs.costPerLetter;
@@ -31,7 +53,7 @@ const addRetroSignLetters = {
         priceContainer.classList.add('active');
     },
     /**
-     * Renders the Retro Sign into the front-end
+     * Renders the Retro Sign based on the given message
      * @param {HTMLInputElement} input - The input field element
      * @param {HTMLElement} container - The container element
      * @param {HTMLElement} priceContainer - the target price container element

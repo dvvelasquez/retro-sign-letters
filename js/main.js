@@ -1,12 +1,14 @@
 import { getRetroSignConfigs } from "./controllers/retro-sign.controller.js";
-import { cartStorage } from "./controllers/local-storage.controller.js"
-import { cartObj } from "./controllers/cart-items-obj.controller.js"
+import { cartStorage } from "./controllers/local-storage.controller.js";
+import { cartObj } from "./controllers/cart-items-obj.controller.js";
+import { productData } from "./controllers/product-page.controller.js";
 import { initRetroSignLetters } from "./display-retro-sign.js";
 import { miniCart } from "./components/mini-cart.js";
 
 /**
  * Initialises the Retro Sign Letters app.
  * Fetches the app configurations to initialise the app otherwise logs an error message and exits.
+ * @async
  * @returns {void}
  */
 const initApp = async () => {
@@ -17,9 +19,12 @@ const initApp = async () => {
         return;
     }
 
-    initRetroSignLetters(configs);
-    miniCart.getCart(cartStorage);
-    miniCart.updateMiniCart(cartObj, '.minicart .product-line-item-summary');
+    if (document.body.classList.contains('product-page')) {
+        initRetroSignLetters(configs);
+
+        miniCart.getCart(cartObj, cartStorage, productData, '');
+        miniCart.removeItemAndUpdateMiniCart(cartObj, cartStorage, productData, '.minicart .product-line-item-summary');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

@@ -1,7 +1,8 @@
 /**
  * Shows a message to the user for a short period of time
- * @param {string} message - The message to be displayed
- * @param {string} [type='danger'] - The message style to be displayed. Defaults to 'danger'
+ * @param {String} message - The message to be displayed
+ * @param {String} [type='danger'] - The message style to be displayed. Defaults to 'danger'
+ * @returns {Void}
  */
 const showErrorMessage = (message, type = 'danger') => {
     const alertBox = document.createElement('div');

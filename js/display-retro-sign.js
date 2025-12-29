@@ -2,6 +2,11 @@ import { getElement } from "./helper/dom-helper.js";
 import { addRetroSignLetters } from "./components/retro-sign-letters.js";
 import { addToCartEventHandlers } from "./product/components/add-to-cart-event-handlers.js";
 
+/**
+ * Initialises and append into the UI the retro sign letter
+ * @param {Object} configs - the retro sign configs
+ * @returns {Void}
+ */
 const initRetroSignLetters = (configs) => {
     const submitBtn = getElement.single('.retro-message-wrapper .retro-sign__submit-text');
     if(!submitBtn || !configs) return;

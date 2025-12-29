@@ -1,7 +1,11 @@
 const cartObj = {
     /**
-     * Fetch the images and price per item added to the cart
-     * @returns {Object} The Cart Items Object
+     * Builds the cart object and unique cart ID based on the provided cart items.
+     * @param {Array<Object>} items - the array of cart items
+     * @returns {Object} The Cart Items data Object
+     * @returns {id} The unique Cart ID
+     * @returns {Array<Object>} items - The Cart Items data Object
+     * @returns {Number} The total cart price
      */
     buildCartObject: (items = []) => {
         try {
@@ -20,6 +24,11 @@ const cartObj = {
             return { id:'', items: [], totalPrice: 0 };
         }
     },
+    /**
+     * Calculates the total price for the retro sign
+     * @param {Array<Object>} items - the array of cart items
+     * @returns {Number} The final price for the retro sign
+     */
     cartSubtotalData: (items = []) => {
         return items.reduce(
             (acc, total) => acc + total.totalPrice,

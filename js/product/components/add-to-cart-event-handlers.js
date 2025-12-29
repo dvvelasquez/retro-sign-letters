@@ -14,7 +14,7 @@ const addToCartEventHandlers = {
         if (!ctaWrapper || !addToCartBtnEL) return;
 
         addToCartEventHandlers.setAddToCartButtonAttributes(retroSignImages, addToCartBtnEL);
-        addToCartEventHandlers.showHideButtonContainer(retroSignImages, ctaWrapper);
+        addToCartEventHandlers.showHidePriceContainer(retroSignImages, ctaWrapper);
     },
     /**
      * Set add to cart button Attributes
@@ -34,7 +34,7 @@ const addToCartEventHandlers = {
      * @param {NodeListOf<HTMLElement>} retroSignImages - the list of images appended
      * @param {HTMLElement} ctaWrapper - The HTML element container
      */
-    showHideButtonContainer: (retroSignImages, ctaWrapper) => {
+    showHidePriceContainer: (retroSignImages, ctaWrapper) => {
         if (retroSignImages.length > 0) {
             ctaWrapper.classList.remove('d-none');
         } else {
