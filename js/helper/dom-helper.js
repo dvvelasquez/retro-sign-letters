@@ -18,12 +18,12 @@ const getElement = {
      * @returns {string} - The Html image template
      */
  const appendImageTemplate = (imgDir, letter, ext, price) =>
- `<img class="retro-sign__img"
-         src="${imgDir}${letter}.${ext}"
-         alt="retro letter ${letter}"
-         data-letter="${letter}"
-         data-price="${price}"
-         loading="lazy">`;
+    `<img class="retro-sign__img"
+        src="${imgDir}${letter}.${ext}"
+        alt="retro letter ${letter}"
+        data-letter="${letter}"
+        data-price="${price}"
+        loading="lazy">`;
 
 /**
  * Appends the Thunder Image to the container

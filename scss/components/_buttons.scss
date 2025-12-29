@@ -34,6 +34,40 @@
     }
 }
 
+.minicart {
+    &__close-btn {
+        background: none;
+        height: auto;
+        opacity: 1;
+        width: fit-content;
+
+        &::before {
+            content: "x";
+            color: currentColor;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        .close-btn-text {
+            text-decoration: underline;
+        }
+    }
+
+    .remove-btn {
+        background: none;
+        border: none;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        &::before {
+            content: "\f057";
+            font-family: "Font Awesome 6 Free";
+            line-height: 1.1;
+            vertical-align: top;
+        }
+    }
+}
+
 @media screen and (min-width: variables.$beak-point-sm) {
     .retro-sign {
         &__submit-text {

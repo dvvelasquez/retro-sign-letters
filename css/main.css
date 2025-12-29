@@ -8372,7 +8372,7 @@ h2 {
   border-radius: 50%;
   color: #ffffff;
   font-size: 12px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.28rem 0.5rem;
   position: absolute;
   right: -13px;
   top: -13px;
@@ -8404,6 +8404,34 @@ h2 {
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   margin-left: 10px;
+}
+
+.minicart__close-btn {
+  background: none;
+  height: auto;
+  opacity: 1;
+  width: fit-content;
+}
+.minicart__close-btn::before {
+  content: "x";
+  color: currentColor;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+.minicart__close-btn .close-btn-text {
+  text-decoration: underline;
+}
+.minicart .remove-btn {
+  background: none;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.minicart .remove-btn::before {
+  content: "\f057";
+  font-family: "Font Awesome 6 Free";
+  line-height: 1.1;
+  vertical-align: top;
 }
 
 @media screen and (min-width: 576px) {
@@ -8474,6 +8502,74 @@ h2 {
 }
 .call-to-actions-wrapper.active {
   display: block;
+}
+
+.minicart__header {
+  align-items: center;
+}
+.minicart__qty {
+  margin-left: 10px;
+}
+.minicart__title {
+  margin-bottom: 0;
+}
+
+.line-item-details {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.line-item-details .line-item-header {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.line-item-details .line-item-title {
+  margin-bottom: 0;
+}
+.product-line-item-details {
+  background: #f4f4f4;
+  border-bottom: 1px solid #b7b7b7;
+}
+.product-line-item-details:last-child {
+  border-bottom: none;
+}
+.product-line-item-details .line-item-details-image {
+  align-items: center;
+  background: #ededed;
+  display: flex;
+}
+.product-line-item-details .line-item-details-image .line-item-image-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  gap: 2px;
+  height: fit-content;
+}
+.product-line-item-details .line-item-details-image .card-img-top {
+  height: max-content;
+  width: 100%;
+}
+
+.minicart-product-total {
+  background: #f4f4f4;
+  margin: 10px 0;
+}
+.minicart-product-total p {
+  letter-spacing: 1.5px;
+  margin-bottom: 0;
+}
+.minicart-product-total .subtotal,
+.minicart-product-total .tax-cost {
+  border-bottom: 1px solid #b7b7b7;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+.minicart-product-total .subtotal .col:last-child,
+.minicart-product-total .estimated-total .col:last-child {
+  flex-grow: 0;
+}
+.minicart-product-total .sub-total-label {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */
