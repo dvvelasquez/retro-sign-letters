@@ -28,10 +28,6 @@
     .line-item-title {
         margin-bottom: 0;
     }
-
-    .remove-btn {
-
-    }
 }
 
 .product-line-item-details {
@@ -51,7 +47,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
             gap: 2px;
-            height: fit-content;
+            height: auto;
         }
 
         .card-img-top {

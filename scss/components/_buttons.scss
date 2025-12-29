@@ -1,6 +1,12 @@
 @use '../variables';
 @use 'sass:color';
 
+button,
+button a {
+    -webkit-appearance: none; /* removes iOS default styling */
+    color: variables.$black-color;
+}
+
 .retro-sign {
     &__submit-text {
         background-color: variables.$yellow-bg;
@@ -61,6 +67,7 @@
 
         &::before {
             content: "\f057";
+            color: currentColor;
             font-family: "Font Awesome 6 Free";
             line-height: 1.1;
             vertical-align: top;
