@@ -1,6 +1,7 @@
 @use '../variables';
 @use 'sass:color';
 
+a,
 button,
 button a {
     -webkit-appearance: none; /* removes iOS default styling */
@@ -72,6 +73,28 @@ button a {
             line-height: 1.1;
             vertical-align: top;
         }
+    }
+}
+
+.checkout-btn {
+    background: variables.$yellow-bg;
+    display: block;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: color.adjust(variables.$yellow-bg, $blackness: 10%);
+    }
+
+    &::after {
+        content: "\f07a";
+        color: currentColor;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        margin-left: 10px;
+        text-decoration: none;
     }
 }
 

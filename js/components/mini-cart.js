@@ -12,32 +12,16 @@ const miniCart = {
      * @returns {void}
      */
     getCart: (cartObj, cartStorage, productData) => {
+        const storedItems = cartStorage.getItems();
+
+        // Append empty mini cart message if empty otherwise append cart items
+        cart.appendCartMessageIfEmpty(storedItems, '.product-line-item-summary', 'h3');
+
         addToCart.innitAddToCart(cartObj, cartStorage, productData, '.add-to-cart-btn');
         cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
-        miniCart.renderMiniCart(cartObj, cartStorage.getItems(), productData);
-        miniCart.getProductCost(cartObj, cartStorage.getItems(), productData);
+        miniCart.renderMiniCart(cartObj, storedItems, productData);
+        cart.getProductCost(cartObj, storedItems, productData);
         cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
-    },
-    /**
-     * Calculates and renders cart pricing totals including GST
-     * @param {Object} cartObj - Cart object builder
-     * @param {Array<Object>} items - Current cart items
-     * @param {Object} productData - Pricing and GST calculator
-     * @returns {void}
-     */
-    getProductCost: (cartObj, items, productData) => {
-        const cartSubtotal = cartObj.cartSubtotalData(items);
-        const subTotalWrapper = getElement.single('.sub-total');
-        const totalGstWrapper = getElement.single('.total-tax-cost');
-        const totalAmountWrapper = getElement.single('.total-amount');
-        const { basePrice, gstAmount, total } = productData.calculateGST(cartSubtotal, 0.10);
-
-        subTotalWrapper.innerHTML = '';
-        subTotalWrapper.insertAdjacentHTML('afterbegin', `$${items.length ? basePrice.toFixed(2) : 0}`);
-        totalGstWrapper.innerHTML = '';
-        totalGstWrapper.insertAdjacentHTML('afterbegin', `$${items.length ? gstAmount.toFixed(2) : 0}`);
-        totalAmountWrapper.innerHTML = '';
-        totalAmountWrapper.insertAdjacentHTML('afterbegin', `$${items.length ? total.toFixed(2) : 0}`);
     },
     /**
      * Renders the Mini Cart into the UI
@@ -49,12 +33,12 @@ const miniCart = {
     renderMiniCart: (cartObj, items, productData) => {
         const productSummaryDetails = cartHelper.productDetailsTemplate(items);
         const productSummaryWrapper = getElement.single('.product-line-item-summary');
-        if (!productSummaryWrapper || !productSummaryDetails.length) return;
+        if (!productSummaryWrapper || !productSummaryDetails) return;
 
         productSummaryWrapper.innerHTML = '';
         productSummaryWrapper.insertAdjacentHTML('afterbegin', productSummaryDetails);
 
-        miniCart.getProductCost(cartObj, items, productData);
+        cart.getProductCost(cartObj, items, productData);
     },
     /**
      * Updates the Mini Cart after an item has been removed

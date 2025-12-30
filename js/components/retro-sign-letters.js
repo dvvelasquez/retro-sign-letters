@@ -1,4 +1,4 @@
-import { showErrorMessage } from "../helper/message-helper.js";
+import { showInputErrorMessage } from "../helper/message-helper.js";
 import { hasNumber } from "../helper/input-validations.js";
 import { createRetroSign } from "../helper/dom-helper.js"
 
@@ -68,9 +68,9 @@ const addRetroSignLetters = {
 
         if (inputMessage === '') {
             addRetroSignLetters.emptyMessageAndPriceContainer(container, priceContainer);
-            showErrorMessage('Please type in a message');
+            showInputErrorMessage('Please type in a message with no special characters or numbers');
         } else if (hasNumber(inputMessage)) {
-            showErrorMessage('Please type in letters only');
+            showInputErrorMessage('Please type in letters only');
         } else {
             addRetroSignLetters.emptyMessageAndPriceContainer(container, priceContainer);
             createRetroSign(inputMessage, container, retroSignConfigs);

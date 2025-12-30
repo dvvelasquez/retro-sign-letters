@@ -1,6 +1,7 @@
 import { getElement } from "../helper/dom-helper.js";
 import { cartHelper } from "../helper/cart-helper.js";
-import { miniCart } from "./mini-cart.js"
+import { miniCart } from "./mini-cart.js";
+import { cart } from "../components/cart.js";
 
 const addToCart = {
     /**
@@ -25,6 +26,7 @@ const addToCart = {
             cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
             cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
             miniCart.renderMiniCart(cartObj, cartStorage.getItems(), productData);
+            cart.cartClassEventHandler(cartStorage.getItems(), ['.minicart-product-total', '.minicart-footer']);
 
             setTimeout(() => {
                 getElement.single('.minicart-link')?.click();

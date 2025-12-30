@@ -8378,6 +8378,7 @@ h2 {
   top: -13px;
 }
 
+a,
 button,
 button a {
   -webkit-appearance: none; /* removes iOS default styling */
@@ -8439,6 +8440,26 @@ button a {
   font-family: "Font Awesome 6 Free";
   line-height: 1.1;
   vertical-align: top;
+}
+
+.checkout-btn {
+  background: #f8dc06;
+  display: block;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+}
+.checkout-btn:hover {
+  background-color: rgb(222.5, 197.4504132231, 6);
+}
+.checkout-btn::after {
+  content: "\f07a";
+  color: currentColor;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-left: 10px;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 576px) {
@@ -8585,6 +8606,14 @@ button a {
 }
 .minicart-product-total .sub-total-label {
   font-size: 1.5rem;
+}
+
+.minicart-footer {
+  margin: 20px 0;
+}
+
+.cart-empty-msg {
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */
