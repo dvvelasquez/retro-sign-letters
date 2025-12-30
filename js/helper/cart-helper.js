@@ -109,7 +109,7 @@ const cartHelper = {
                             </div>
                         </div>
                         <div class="card-text line-item-price">
-                            <span class="amount"> <bdi>${product.cartTotalPrice}</bdi></span>
+                            <span class="amount"> <bdi>$${product.cartTotalPrice}</bdi></span>
                             <small class="amount">(incl. GST)</small>
                         </div>
                     </div>

@@ -8535,6 +8535,10 @@ button a {
 .line-item-details .line-item-title {
   margin-bottom: 0;
 }
+.line-item-details .line-item-price,
+.line-item-details .line-item-title {
+  letter-spacing: 1.5px;
+}
 
 .product-line-item-details {
   background: #f4f4f4;
@@ -8555,7 +8559,9 @@ button a {
   height: auto;
 }
 .product-line-item-details .line-item-details-image .card-img-top {
-  height: max-content;
+  aspect-ratio: 1/1;
+  height: auto;
+  object-fit: contain;
   width: 100%;
 }
 

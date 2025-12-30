@@ -28,6 +28,11 @@
     .line-item-title {
         margin-bottom: 0;
     }
+
+    .line-item-price,
+    .line-item-title {
+        letter-spacing: 1.5px;
+    }
 }
 
 .product-line-item-details {
@@ -51,7 +56,9 @@
         }
 
         .card-img-top {
-            height: max-content;
+            aspect-ratio: 1 / 1; // square thumbnails
+            height: auto;
+            object-fit: contain;
             width: 100%;
         }
     }
