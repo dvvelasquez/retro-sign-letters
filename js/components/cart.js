@@ -16,7 +16,7 @@ const cart = {
         if (!e.target.classList.contains('remove-product')) return;
 
         const removeBtn = e.target;
-        const productItem = removeBtn.closest('.product-line-item-details');
+        const productItem = removeBtn.closest('.card');
 
         const productId = removeBtn.dataset.uuid;
         const updatedItems = cartHelper.removeAndUpdateItem(cartStorage, productId);
@@ -28,7 +28,6 @@ const cart = {
         // Append empty mini cart message if empty otherwise append cart items
         cart.appendCartMessageIfEmpty(updatedItems, '.product-line-item-summary', 'h3');
 
-        miniCart.renderMiniCart(cartObj, updatedItems, productData);
         cart.getProductCost(cartObj, updatedItems, productData);
         cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
         cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
@@ -78,6 +77,20 @@ const cart = {
         totalAmountWrapper.innerHTML = '';
         totalAmountWrapper.insertAdjacentHTML('afterbegin', `$${items.length ? total.toFixed(2) : 0}`);
     },
+    getCartData: (cartObj, cartStorage, productData) => {
+        const items = cartStorage.getItems();
+        cart.getProductCost(cartObj, items, productData);
+        cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
+        cartHelper.updateMiniCartItemsQty(cartStorage, ['.minicart .items__number', '.cart .items__number']);
+    },
+    renderCartItems: (items, container) => {
+        const productSummaryDetails = cartHelper.productDetailsTemplate(items);
+        const productSummaryWrapper = getElement.single(container);
+        if (!productSummaryWrapper || !productSummaryDetails) return;
+
+        productSummaryWrapper.innerHTML = '';
+        productSummaryWrapper.insertAdjacentHTML('afterbegin', productSummaryDetails);
+    }
 }
 
 export { cart }

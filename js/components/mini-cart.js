@@ -11,17 +11,14 @@ const miniCart = {
      * @param {Object} productData - Selected product data and pricing logic
      * @returns {void}
      */
-    getCart: (cartObj, cartStorage, productData) => {
+    getMiniCart: (cartObj, cartStorage, productData) => {
         const storedItems = cartStorage.getItems();
 
         // Append empty mini cart message if empty otherwise append cart items
         cart.appendCartMessageIfEmpty(storedItems, '.product-line-item-summary', 'h3');
 
         addToCart.innitAddToCart(cartObj, cartStorage, productData, '.add-to-cart-btn');
-        cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
         miniCart.renderMiniCart(cartObj, storedItems, productData);
-        cart.getProductCost(cartObj, storedItems, productData);
-        cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
     },
     /**
      * Renders the Mini Cart into the UI
@@ -31,13 +28,7 @@ const miniCart = {
      * @returns {void}
      */
     renderMiniCart: (cartObj, items, productData) => {
-        const productSummaryDetails = cartHelper.productDetailsTemplate(items);
-        const productSummaryWrapper = getElement.single('.product-line-item-summary');
-        if (!productSummaryWrapper || !productSummaryDetails) return;
-
-        productSummaryWrapper.innerHTML = '';
-        productSummaryWrapper.insertAdjacentHTML('afterbegin', productSummaryDetails);
-
+        cart.renderCartItems(items, '.minicart .product-line-item-summary');
         cart.getProductCost(cartObj, items, productData);
     },
     /**

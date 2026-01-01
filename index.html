@@ -19,24 +19,28 @@
   <title>Create Your Custom Signs</title>
 </head>
 <body class="product-page">
-    <div class="main">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container justify-content-end py-2">
-                <div class="masthead">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="minicart-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                <span>cart</span>
-                                <span class="badge badge-danger minicart-quantity">
-                                    0
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
+    <header id="header" itemscope itemtype="https://schema.org/WPHeader">
+        <div class="container-fluid bg-body-tertiary">
+            <nav class="navbar">
+                <div class="container justify-content-end py-2">
+                    <div class="masthead">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="minicart-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                    <span>cart</span>
+                                    <span class="badge badge-danger minicart-quantity">
+                                        0
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
+    </header>
 
+    <div class="main">
         <div class="container">
             <h1 class="letter-title py-5">Create Your Retro Signs</h1>
 
@@ -87,58 +91,55 @@
                 <span class="close-btn-text">Close</span>
             </button>
         </div>
-        <div class="offcanvas-body pt-0">
-            <div class="col-12">
-                <div class="row card minicart-card-body border-0">
-                    <div class="product-line-item-summary"></div>
+        <div class="offcanvas-body py-0 px-1">
+            <div class="minicart-card-body">
+                <div class="product-line-item-summary"></div>
 
-                    <!-- Product subtotal -->
-                    <div class="product-total minicart-product-total py-3">
-                        <div class="col-12 subtotal d-flex">
-                            <div class="col">
-                                <span class="label">Subtotal - <span class="items__number"></span></span>
-                            </div>
-
-                            <div class="col">
-                                <p class="sub-total"></p>
-                            </div>
+                <!-- Product subtotal -->
+                <div class="product-total minicart-product-total py-3">
+                    <div class="subtotal d-flex">
+                        <div class="col">
+                            <span class="label">Subtotal - <span class="items__number"></span></span>
                         </div>
 
-                        <div class="col-12 shipping-cost">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span id="shippingCost">Shipping</span>
-                                <p class="shipping-cost" aria-labelledby="shippingCost">$0.00</p>
-                            </div>
-                        </div>
-                        <div class="col-12 tax-cost">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span id="totalTax">GST included</span>
-                                <p class="total-tax-cost" aria-labelledby="totalTax"></p>
-                            </div>
-                        </div>
-                        <div class="col-12 d-flex estimated-total">
-                            <div class="col">
-                                <p class="sub-total-label">Total</p>
-                            </div>
-                            <div class="col">
-                                <p class="total-amount"></p>
-                            </div>
+                        <div class="col">
+                            <p class="sub-total"></p>
                         </div>
                     </div>
 
-                    <!-- Mini Cart Footer -->
-                    <div class="minicart-footer">
-                        <div class="row">
-                            <div class="col-12 checkout-continue">
-                                <div class="checkout-button-wrap">
-                                    <a href="./cart.html" class="checkout-btn" role="button" aria-pressed="true">
-                                        Go To Cart
-                                    </a>
-                                </div>
+                    <div class="shipping-cost">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span id="shippingCost">Shipping</span>
+                            <p class="shipping-cost" aria-labelledby="shippingCost">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="tax-cost">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span id="totalTax">GST included</span>
+                            <p class="total-tax-cost" aria-labelledby="totalTax"></p>
+                        </div>
+                    </div>
+                    <div class="d-flex estimated-total">
+                        <div class="col">
+                            <p class="sub-total-label">Total</p>
+                        </div>
+                        <div class="col">
+                            <p class="total-amount"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Cart Footer -->
+                <div class="minicart-footer">
+                    <div class="row">
+                        <div class="col-12 checkout-continue">
+                            <div class="checkout-button-wrap">
+                                <a href="./cart.html" class="checkout-btn" role="button" aria-pressed="true">
+                                    Go To Cart
+                                </a>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

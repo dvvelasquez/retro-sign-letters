@@ -17,6 +17,7 @@ const getRetroSignConfigs = async () => {
         return {
             status: 'ok',
             retroSignConfigs: jsonResponse.retro_sign,
+            retroTypeConfigs: jsonResponse.typeOfSign,
             code: 200
         }
     } catch (error) {
@@ -29,6 +30,7 @@ const getRetroSignConfigs = async () => {
         return {
             status: 'error',
             retroSignConfigs: {},
+            retroTypeConfigs: {},
             code: 500
         }
     }

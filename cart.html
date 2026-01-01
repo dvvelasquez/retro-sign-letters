@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+  <!-- Boostrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/9b8734b63a.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./css/main.css">
+
+  <title>Cart</title>
+</head>
+<body class="cart-page">
+    <header id="header" itemscope itemtype="https://schema.org/WPHeader">
+        <div class="container-fluid bg-body-tertiary">
+            <nav class="navbar">
+                <div class="container justify-content-end py-2">
+                    <div class="masthead">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="minicart-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                    <span>cart</span>
+                                    <span class="badge badge-danger minicart-quantity">
+                                        0
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="container">
+            <div class="cart">
+                <div class="row main-header-bar">
+                    <div class="col-12 col-md-8 main-col d-flex justify-content-between align-items-center">
+                        <div class="main-header-bar__heading d-flex align-items-center">
+                            <h1>Cart</h1>
+                            <small class="minicart__qty"> (<span class="items__number"></span>)</small>
+                        </div>
+
+                        <a href="./index.html" class="continue-shopping-link">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+                <div class="cart-card-body border-0">
+                    <div class="row">
+                        <div class="col-12 col-md-8 main-col">
+                            <div class="cart-item-list product-line-item-summary"></div>
+
+                            <div class="cart-item-list cart-item-cta d-none d-md-block">
+                                <a href="#" class="checkout-btn" role="button" aria-pressed="true">
+                                    Checkout
+                                </a>
+                            </div>
+
+                            <div class="d-block d-md-none aside-mobile-col">
+                                <div class="col-12 checkout-continue">
+                                    <div class="checkout-button-wrap">
+                                        <a href="#" class="checkout-btn" role="button" aria-pressed="true">
+                                            Checkout
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4 d-none d-md-block">
+                            <!-- Product subtotal -->
+                            <aside class="row aside-container">
+                                <div class="product-total cart-product-total py-3">
+                                    <div class="subtotal d-flex">
+                                        <div class="col">
+                                            <span class="label">Subtotal - <span class="items__number"></span></span>
+                                        </div>
+
+                                        <div class="col">
+                                            <p class="sub-total"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="shipping-cost">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span id="shippingCost">Shipping</span>
+                                            <p class="shipping-cost" aria-labelledby="shippingCost">$0.00</p>
+                                        </div>
+                                    </div>
+                                    <div class="tax-cost">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span id="totalTax">GST included</span>
+                                            <p class="total-tax-cost" aria-labelledby="totalTax"></p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex estimated-total">
+                                        <div class="col">
+                                            <p class="sub-total-label">Total</p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="total-amount"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mini Cart Footer -->
+                                <div class="cart-footer">
+                                    <div class="row">
+                                        <div class="col-12 checkout-continue">
+                                            <div class="checkout-button-wrap">
+                                                <a href="#" class="checkout-btn" role="button" aria-pressed="true">
+                                                    Checkout
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="./js/main.js" type="module"></script>
+</body>
+</html>

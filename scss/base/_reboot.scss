@@ -5,9 +5,12 @@
 }
 
 body {
-    background: url("../assets/images/retro_bg.jpg") no-repeat fixed center;
-    background-color: variables.$yellow-bg;
-    background-size: cover;
+    &.product-page {
+        background: url("../assets/images/retro_bg.jpg") no-repeat fixed center;
+        background-color: variables.$yellow-bg;
+        background-size: cover;
+    }
+
     font-family: variables.$font-family-sans-serif;
     font-size: 18px;
 }

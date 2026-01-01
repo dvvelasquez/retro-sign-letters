@@ -59,20 +59,20 @@ button a {
             text-decoration: underline;
         }
     }
+}
 
-    .remove-btn {
-        background: none;
-        border: none;
-        padding-top: 0;
-        padding-bottom: 0;
+.remove-btn {
+    background: none;
+    border: none;
+    padding-top: 0;
+    padding-bottom: 0;
 
-        &::before {
-            content: "\f057";
-            color: currentColor;
-            font-family: "Font Awesome 6 Free";
-            line-height: 1.1;
-            vertical-align: top;
-        }
+    &::before {
+        content: "\f057";
+        color: currentColor;
+        font-family: "Font Awesome 6 Free";
+        line-height: 1.1;
+        vertical-align: top;
     }
 }
 

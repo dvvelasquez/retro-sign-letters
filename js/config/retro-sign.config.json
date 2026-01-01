@@ -6,5 +6,8 @@
         "thunderExt": "gif",
         "thunderImg": "THUNDER",
         "imageDir": "./assets/images/retro-letters/"
+    },
+    "typeOfSign": {
+        "type": "Regular"
     }
 }

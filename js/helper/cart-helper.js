@@ -90,27 +90,36 @@ const cartHelper = {
 
         return productDetails.map(product => {
             return `
-                <div class="row product-line-item-details py-3">
-                    <div class="col-5 line-item-details-image">
-                        <div class="line-item-image-wrapper">
-                            ${product.cartImages ? product.cartImages : 'https://dummyimage.com/600x400/000/fff'}
-                        </div>
-                    </div>
-                    <div class="col-7 card-body line-item-details">
-                        <div class="line-item-header">
-                            <h5 class="card-title line-item-title">${product.cartTitle}</h5>
-                            <div class="remove-line-item">
-                                <button type="button"
-                                    class="remove-btn
-                                    remove-product"
-                                    aria-label="Remove Item"
-                                    data-uuid="${product.productId}">
-                                </button>
+                <div class="card uuid-${product.productId}">
+                    <div class="card-body">
+                        <div class="product-line-item">
+                            <div class="product-line-item-details row">
+                                <div class="col-5 line-item-details-image">
+                                    <div class="line-item-image-wrapper">
+                                        ${product.cartImages ? product.cartImages : 'https://dummyimage.com/600x400/000/fff'}
+                                    </div>
+                                </div>
+                                <div class="col-7 line-item-detail">
+                                    <div class="line-item-header">
+                                        <h5 class="card-title line-item-title">${product.cartTitle}</h5>
+                                        <div class="remove-line-item">
+                                            <button type="button"
+                                                class="remove-btn
+                                                remove-product"
+                                                aria-label="Remove Item"
+                                                data-uuid="${product.productId}">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-label line-item-type">
+                                        <span class="type">${product.productType}</span>
+                                    </div>
+                                    <div class="card-text line-item-price">
+                                        <span class="amount"> <bdi>$${product.cartTotalPrice}</bdi></span>
+                                        <small class="amount">(incl. GST)</small>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-text line-item-price">
-                            <span class="amount"> <bdi>$${product.cartTotalPrice}</bdi></span>
-                            <small class="amount">(incl. GST)</small>
                         </div>
                     </div>
                 </div>
