@@ -16,7 +16,8 @@ const productData = {
             {
                 image: img.getAttribute('src'),
                 letter: img.dataset.letter,
-                price: Number(img.dataset.price)
+                price: Number(img.dataset.price),
+                printType: img.dataset.printStyle
             }
         ));
     },

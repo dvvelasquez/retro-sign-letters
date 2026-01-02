@@ -14,14 +14,17 @@ const cartObj = {
                 0,
             );
 
+            const printStyle = items[0].printType
+
             return {
                 id: crypto.randomUUID(),
                 items,
-                totalPrice
+                totalPrice,
+                printStyle
             };
         } catch (error) {
             console.error('Failed to generate cart object:', error);
-            return { id:'', items: [], totalPrice: 0 };
+            return { id:'', items: [], totalPrice: 0, printStyle: '' };
         }
     },
     /**

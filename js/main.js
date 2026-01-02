@@ -20,8 +20,10 @@ const initApp = async () => {
         return;
     }
 
+    const { retroSignConfigs, retroTypeConfigs } = configs;
+
     if (document.body.classList.contains('product-page')) {
-        initRetroSignLetters(configs);
+        initRetroSignLetters(retroSignConfigs, retroTypeConfigs);
         miniCart.getMiniCart(cartObj, cartStorage, productData);
     }
 

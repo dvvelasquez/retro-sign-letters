@@ -67,7 +67,6 @@
     .product-line-item-details {
         .line-item-details-image {
             .line-item-image-wrapper {
-                grid-template-columns: repeat(auto-fit, minmax(calc(20% - 2px), 1fr));
                 padding: 12px;
                 width: 100%;
             }

@@ -78,10 +78,13 @@
         letter-spacing: 1.5px;
     }
 
-    .line-item-type {
-        .type {
-            border: 1px solid variables.$black-color;
-            padding: 5px;
+    .line-item-attributes {
+        display: flex;
+        margin: 0;
+        font-size: 1rem;
+
+        .print-style {
+            margin: 0 0 0 8px;
         }
     }
 }

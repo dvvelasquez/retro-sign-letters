@@ -46,10 +46,21 @@
 
 #price-wrapper {
     background-color: variables.$white-color;
+    margin-top: 3rem;
     text-align: center;
+
+    .retro-sign-total-price {
+        padding: 1rem;
+    }
 
     .price-range {
         color: variables.$black-color;
+    }
+
+    .print-style {
+        color: variables.$black-color;
+        letter-spacing: 1px;
+        margin: 0;
     }
 }
 

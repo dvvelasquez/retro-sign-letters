@@ -11,10 +11,8 @@ const addRetroSignLetters = {
      * @param {Object} configs - The configs app object
      * @returns {void}
      */
-    init: (inputField, signContainer, priceContainer, configs) => {
-        if(!configs) return;
-
-        addRetroSignLetters.renderRetroSign(inputField, signContainer, priceContainer, configs);
+    init: (inputField, signContainer, priceContainer, retroSignConfigs, retroTypeConfigs) => {
+        addRetroSignLetters.renderRetroSign(inputField, signContainer, priceContainer, retroSignConfigs, retroTypeConfigs);
     },
     /**
      * Calculate the total price for the retro sign letters
@@ -45,10 +43,17 @@ const addRetroSignLetters = {
      * @param {HTMLElement} priceContainer - The price container element
      * @param {Object} retroSignConfigs - The retro sign configs obj
      */
-    appendRetroSignPrice: (message, priceContainer, retroSignConfigs) => {
+    appendRetroSignPrice: (message, priceContainer, retroSignConfigs, retroTypeConfigs) => {
         const basePrice = retroSignConfigs.basePrice;
         const letterPrice = retroSignConfigs.costPerLetter;
-        const totalPrice = `<h2 class="price-range mt-5 p-3">Your Retro Sign Price is: $${addRetroSignLetters.calculateSignPrice(message, letterPrice, basePrice)}</h2>`
+        const totalPrice = `
+            <div class="retro-sign-total-price">
+                <h2 class="price-range">
+                    Your Retro Sign Price is: $${addRetroSignLetters.calculateSignPrice(message, letterPrice, basePrice)}
+                </h2>
+                <h4 class="print-style">Standard Print Style: ${retroTypeConfigs.type}</h4>
+            </div>
+            `
         priceContainer.insertAdjacentHTML('afterbegin', totalPrice);
         priceContainer.classList.add('active');
     },
@@ -60,9 +65,8 @@ const addRetroSignLetters = {
      * @param {object} configs - The configs app object
      * @returns {void}
      */
-    renderRetroSign: (input, container, priceContainer, configs) => {
-        const { retroSignConfigs } = configs;
-        if (!retroSignConfigs || !input || !container || !priceContainer) return;
+    renderRetroSign: (input, container, priceContainer, retroSignConfigs, retroTypeConfigs) => {
+        if (!retroSignConfigs || !retroTypeConfigs || !input || !container || !priceContainer) return;
 
         const inputMessage = input.value.toUpperCase().replace(/[^A-Z0-9 ]/g, '');
 
@@ -73,8 +77,8 @@ const addRetroSignLetters = {
             showInputErrorMessage('Please type in letters only');
         } else {
             addRetroSignLetters.emptyMessageAndPriceContainer(container, priceContainer);
-            createRetroSign(inputMessage, container, retroSignConfigs);
-            addRetroSignLetters.appendRetroSignPrice(inputMessage, priceContainer, retroSignConfigs);
+            createRetroSign(inputMessage, container, retroSignConfigs, retroTypeConfigs);
+            addRetroSignLetters.appendRetroSignPrice(inputMessage, priceContainer, retroSignConfigs, retroTypeConfigs);
         }
     }
 }

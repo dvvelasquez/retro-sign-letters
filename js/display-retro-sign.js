@@ -7,9 +7,9 @@ import { addToCartEventHandlers } from "./product/components/add-to-cart-event-h
  * @param {Object} configs - the retro sign configs
  * @returns {Void}
  */
-const initRetroSignLetters = (configs) => {
+const initRetroSignLetters = (retroSignConfigs, retroTypeConfigs) => {
     const submitBtn = getElement.single('.retro-message-wrapper .retro-sign__submit-text');
-    if(!submitBtn || !configs) return;
+    if(!submitBtn) return;
 
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const initRetroSignLetters = (configs) => {
         const priceContainer = getElement.single('#price-wrapper');
         if(!inputField || !signContainer || !priceContainer) return;
 
-        addRetroSignLetters.init(inputField, signContainer, priceContainer, configs);
+        addRetroSignLetters.init(inputField, signContainer, priceContainer, retroSignConfigs, retroTypeConfigs);
         addToCartEventHandlers.init('.retro-sign__img', '.call-to-actions-wrapper', '.add-to-cart-btn');
     });
 }

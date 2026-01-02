@@ -17,12 +17,13 @@ const getElement = {
      * @param {string} ext - The image extension
      * @returns {string} - The Html image template
      */
- const appendImageTemplate = (imgDir, letter, ext, price) =>
+ const appendImageTemplate = (imgDir, letter, ext, price, printType) =>
     `<img class="retro-sign__img"
         src="${imgDir}${letter}.${ext}"
         alt="retro letter ${letter}"
         data-letter="${letter}"
         data-price="${price}"
+        data-print-style="${printType}"
         loading="lazy">`;
 
 /**
@@ -32,7 +33,7 @@ const getElement = {
  * @param {string} ext - The image extension
  * @returns {string} - The Html template containing the Thunder Image
  */
- const appendThunderImg = (imgDir, img, ext, letterPrice) => appendImageTemplate(imgDir, img, ext, letterPrice);
+ const appendThunderImg = (imgDir, img, ext, letterPrice, printType) => appendImageTemplate(imgDir, img, ext, letterPrice, printType);
 
 /**
  * Creates the Retro Sign to append to the container
@@ -42,27 +43,28 @@ const getElement = {
  * @param {object} configs - The configs app object
  * @returns {string} the html template with the message
  */
- const createRetroSign = (input, container, retroSignConfigs) => {
+ const createRetroSign = (input, container, retroSignConfigs, retroTypeConfigs) => {
     const imgDir = retroSignConfigs.imageDir;
     const letterExt = retroSignConfigs.letterExt;
     const letterPrice = retroSignConfigs.costPerLetter;
     const thunderImage = retroSignConfigs.thunderImg;
     const thunderImageExt = retroSignConfigs.thunderExt;
+    const printType = retroTypeConfigs.type;
 
     const message = input;
 
     if (message.length > 0 && !hasNumber(message)) {
         container.classList.add('active')
-        container.insertAdjacentHTML('afterbegin', appendThunderImg(imgDir, thunderImage, thunderImageExt, letterPrice));
+        container.insertAdjacentHTML('afterbegin', appendThunderImg(imgDir, thunderImage, thunderImageExt, letterPrice, printType));
 
         for (const letter of message) {
             let imgHtml = letter === ' '
-                ? appendThunderImg(imgDir, thunderImage, thunderImageExt, letterPrice)
-                : appendImageTemplate(imgDir, letter, letterExt, letterPrice);
+                ? appendThunderImg(imgDir, thunderImage, thunderImageExt, letterPrice, printType)
+                : appendImageTemplate(imgDir, letter, letterExt, letterPrice, printType);
             container.insertAdjacentHTML('beforeend', imgHtml);
         }
 
-        container.insertAdjacentHTML('beforeend', appendThunderImg(imgDir, thunderImage, thunderImageExt, letterPrice));
+        container.insertAdjacentHTML('beforeend', appendThunderImg(imgDir, thunderImage, thunderImageExt, letterPrice, printType));
     }
 
     return message;

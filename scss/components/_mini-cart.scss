@@ -1,7 +1,8 @@
 @use '../variables';
 
-.offcanvas-body {
-    overflow: visible;
+.minicart-card-body {
+    overflow: scroll;
+    width: 100%;
 }
 
 .minicart {

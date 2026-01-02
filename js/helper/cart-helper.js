@@ -58,6 +58,7 @@ const cartHelper = {
             const cartItems = cartItem.items;
             const productId = cartItem.id;
             const cartImages = cartItems.map(item => cartHelper.miniCartImageTemplate(item.image, item.letter, item.price)).join('');
+            const printStyle = cartItem.printStyle;
 
             const cartTitle = cartItems.map(item => {
                 if (item.letter === 'THUNDER') {
@@ -73,6 +74,7 @@ const cartHelper = {
                 productId,
                 cartImages,
                 cartTitle,
+                printStyle,
                 cartTotalPrice
             }
         });
@@ -90,7 +92,7 @@ const cartHelper = {
 
         return productDetails.map(product => {
             return `
-                <div class="card uuid-${product.productId}">
+                <div class="card uuid-${product.productId}" data-print-style="${product.printStyle}">
                     <div class="card-body">
                         <div class="product-line-item">
                             <div class="product-line-item-details row">
@@ -111,8 +113,11 @@ const cartHelper = {
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="card-label line-item-type">
-                                        <span class="type">${product.productType}</span>
+                                    <div class="item-attributes">
+                                        <dl class="line-item-attributes">
+                                            <dt class="print-style-label">Print Style:</dt>
+                                            <dd class="print-style">${product.printStyle}</dd>
+                                        </dl>
                                     </div>
                                     <div class="card-text line-item-price">
                                         <span class="amount"> <bdi>$${product.cartTotalPrice}</bdi></span>
