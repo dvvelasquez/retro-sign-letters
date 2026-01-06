@@ -1,6 +1,6 @@
 import { showInputErrorMessage } from "../helper/message-helper.js";
 import { hasNumber } from "../helper/input-validations.js";
-import { createRetroSign } from "../helper/dom-helper.js"
+import { createRetroSign } from "../helper/product-page-helper.js"
 
 const addRetroSignLetters = {
     /**

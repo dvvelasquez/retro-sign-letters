@@ -60,5 +60,18 @@
 }
 
 .cart-empty-msg {
+    padding: 1rem;
     text-align: center;
+
+    @media screen and (min-width: variables.$beak-point-md) {
+        padding: 0;
+    }
+
+    .empty-cart-btn {
+        &::before {
+            content: "\f053";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+    }
 }

@@ -19,16 +19,18 @@ const showInputErrorMessage = (message, type = 'danger') => {
 /**
  * Shows a message in the Mini Cart if the cart is empty
  * @param {String} message - The message to be displayed
- * @param {HTMLElement} The target html container
+ * @param {HTMLElement} containers- The target html container
+ * @param {HTMLElement} tag - The tag html for the target container
  * @returns {Void}
  */
-const cartEmptyMessage = (message, container, tag = 'p') => {
+const cartEmptyMessage = (message, container) => {
     const emptyCartMsg = document.createElement('div');
     emptyCartMsg.className = "cart-empty-msg my-3";
-    emptyCartMsg.innerHTML = `
-        <${tag}>${message}</${tag}>
-        <a href="./index.html" type="button" class="btn btn-outline-dark">< Create Sign letter</a>
-    `;
+    if (!message || !container) return;
+
+    if (container.querySelector('.cart-empty-msg')) return;
+
+    emptyCartMsg.innerHTML = message;
     emptyCartMsg.setAttribute('role', 'status');
     container.appendChild(emptyCartMsg);
 }

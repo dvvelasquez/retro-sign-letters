@@ -11,14 +11,11 @@ const miniCart = {
      * @param {Object} productData - Selected product data and pricing logic
      * @returns {void}
      */
-    getMiniCart: (cartObj, cartStorage, productData) => {
+    renderMiniCart: (cartObj, cartStorage, productData) => {
         const storedItems = cartStorage.getItems();
 
-        // Append empty mini cart message if empty otherwise append cart items
-        cart.appendCartMessageIfEmpty(storedItems, '.product-line-item-summary', 'h3');
-
         addToCart.innitAddToCart(cartObj, cartStorage, productData, '.add-to-cart-btn');
-        miniCart.renderMiniCart(cartObj, storedItems, productData);
+        miniCart.updateMiniCartUI(cartObj, storedItems, productData);
     },
     /**
      * Renders the Mini Cart into the UI
@@ -27,9 +24,13 @@ const miniCart = {
      * @param {Object} productData - The product data selected product image info
      * @returns {void}
      */
-    renderMiniCart: (cartObj, items, productData) => {
-        cart.renderCartItems(items, '.minicart .product-line-item-summary');
+     updateMiniCartUI: (cartObj, items, productData) => {
+        cart.getCartItems(items, '.minicart .product-line-item-summary');
         cart.getProductCost(cartObj, items, productData);
+
+        if (items.length > 0) return;
+        // Append empty mini cart message if empty otherwise append cart items
+        cart.appendCartMessageIfEmpty(items, '.mini-cart-error-msg');
     },
     /**
      * Updates the Mini Cart after an item has been removed
@@ -39,7 +40,7 @@ const miniCart = {
      * @param {String} targetEl - The class of the target selector (remove btn)
      * @returns {void}
      */
-     removeItemAndUpdateMiniCart: (cartObj, cartStorage, productData, targetEl) => {
+     removeItemAndUpdateCart: (cartObj, cartStorage, productData, targetEl) => {
         const container = getElement.single(targetEl);
         if (!container) return;
 

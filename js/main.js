@@ -5,6 +5,7 @@ import { productData } from "./controllers/product-page.controller.js";
 import { initRetroSignLetters } from "./display-retro-sign.js";
 import { miniCart } from "./components/mini-cart.js";
 import { cart } from "./components/cart.js";
+import { footer } from "./helper/footer.js";
 
 /**
  * Initialises the Retro Sign Letters app.
@@ -20,18 +21,19 @@ const initApp = async () => {
         return;
     }
 
+    footer.displayYear();
     const { retroSignConfigs, retroTypeConfigs } = configs;
 
     if (document.body.classList.contains('product-page')) {
         initRetroSignLetters(retroSignConfigs, retroTypeConfigs);
-        miniCart.getMiniCart(cartObj, cartStorage, productData);
+        miniCart.renderMiniCart(cartObj, cartStorage, productData);
     }
 
     if (document.body.classList.contains('cart-page')) {
-        cart.renderCartItems(cartStorage.getItems(), '.cart .product-line-item-summary');
+        cart.renderCart(cartObj, cartStorage, productData);
     }
 
-    miniCart.removeItemAndUpdateMiniCart(cartObj, cartStorage, productData, '.product-line-item-summary');
+    miniCart.removeItemAndUpdateCart(cartObj, cartStorage, productData, '.product-line-item-summary');
     cart.getCartData(cartObj, cartStorage, productData);
 }
 

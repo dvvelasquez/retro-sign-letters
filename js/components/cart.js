@@ -25,22 +25,24 @@ const cart = {
             productItem.remove();
         }
 
+        const selector = document.body.classList.contains('product-page') ? '.mini-cart-error-msg' : '.cart-error-msg';
+
         // Append empty mini cart message if empty otherwise append cart items
-        cart.appendCartMessageIfEmpty(updatedItems, '.product-line-item-summary', 'h3');
+        cart.appendCartMessageIfEmpty(updatedItems, selector);
 
         cart.getProductCost(cartObj, updatedItems, productData);
         cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
-        cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
+        cartHelper.updateMiniCartItemsQty(cartStorage, ['.minicart .items__number', '.cart .items__number']);
 
         return updatedItems;
     },
     cartClassEventHandler: (storedItems, targetEl) => {
         const containers = getElement.multiple(targetEl);
         containers.forEach(container => {
-            if (!storedItems.length) {
-                container.classList.add('d-none');
-            } else {
+            if (storedItems.length > 0) {
                 container.classList.remove('d-none');
+            } else {
+                container.classList.add('d-none');
             }
         });
     },
@@ -49,12 +51,32 @@ const cart = {
      * @param {Object} storedItems - The local storage object handler
      * @param {String} container - The class selector of the target element
      */
-    appendCartMessageIfEmpty: (storedItems, container, tag) => {
+    appendCartMessageIfEmpty: (storedItems, container) => {
         const productSummaryWrapper = getElement.single(container);
-        if (!storedItems.length && productSummaryWrapper) {
-            cartEmptyMessage('Your Shopping Cart is Empty', productSummaryWrapper, tag);
-            cart.cartClassEventHandler(storedItems, ['.minicart-product-total', '.minicart-footer']);
+        if (!productSummaryWrapper) return;
+
+        const selector = document.body.classList.contains('product-page')
+            ? ['.minicart-product-total', '.minicart-footer']
+            : ['.cart-product-total', '.cart-footer', '.cart-item-cta'];
+
+        const existingEmptyMsg = productSummaryWrapper.querySelector('.cart-empty-msg');
+        if (storedItems.length > 0) {
+            productSummaryWrapper.dataset.isActive = 'false';
+            existingEmptyMsg?.remove();
+            cart.cartClassEventHandler(storedItems, selector);
+            return;
         };
+
+        productSummaryWrapper.dataset.isActive = 'true';
+
+        if (!existingEmptyMsg) {
+            const htmlMessage = `
+                <h3>Your Shopping Cart is Empty</h3>
+                <a href="./index.html" type="button" class="btn btn-outline-dark empty-cart-btn">Create Sign letter</a>
+            `
+            cartEmptyMessage(htmlMessage, productSummaryWrapper);
+        }
+        cart.cartClassEventHandler(storedItems, selector);
     },
     /**
      * Calculates and renders cart pricing totals including GST
@@ -83,13 +105,21 @@ const cart = {
         cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
         cartHelper.updateMiniCartItemsQty(cartStorage, ['.minicart .items__number', '.cart .items__number']);
     },
-    renderCartItems: (items, container) => {
+    getCartItems: (items, container) => {
         const productSummaryDetails = cartHelper.productDetailsTemplate(items);
         const productSummaryWrapper = getElement.single(container);
         if (!productSummaryWrapper || !productSummaryDetails) return;
 
         productSummaryWrapper.innerHTML = '';
         productSummaryWrapper.insertAdjacentHTML('afterbegin', productSummaryDetails);
+    },
+    renderCart: (cartObj, cartStorage, productData) => {
+        const storedItems = cartStorage.getItems();
+
+        // Append empty mini cart message if empty otherwise append cart items
+        cart.appendCartMessageIfEmpty(storedItems, '.cart-error-msg');
+        cart.getCartItems(storedItems, '.cart .product-line-item-summary');
+        cart.getProductCost(cartObj, storedItems, productData);
     }
 }
 

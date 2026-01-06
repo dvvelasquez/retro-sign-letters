@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 
   <title>Create Your Custom Signs</title>
 </head>
-<body class="product-page">
+<body class="product-page d-flex flex-column h-100">
     <header id="header" itemscope itemtype="https://schema.org/WPHeader">
         <div class="container-fluid bg-body-tertiary">
             <nav class="navbar">
@@ -40,7 +40,7 @@
         </div>
     </header>
 
-    <div class="main">
+    <main class="main">
         <div class="container">
             <h1 class="letter-title py-5">Create Your Retro Signs</h1>
 
@@ -80,7 +80,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark text-bg-dark">
+        <div class="container">
+            <p class="copyright">
+                <span class="current-date"></span> | Design and Developed by:
+                <a class="text-bg-dark" href="https://github.com/dvvelasquez" target="_blank" role="link" type="button" >
+                    Diego Velasquez
+                </a>
+            </p>
+        </div>
+    </footer>
 
     <!-- Off Canvas MiniCart -->
     <div class="minicart offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -93,6 +104,8 @@
         </div>
         <div class="offcanvas-body py-0 px-1">
             <div class="minicart-card-body">
+                <div class="mini-cart-error-msg" role="alert" data-is-active="true"></div>
+
                 <div class="product-line-item-summary"></div>
 
                 <!-- Product subtotal -->

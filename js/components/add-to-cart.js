@@ -25,8 +25,8 @@ const addToCart = {
             cartStorage.updateItems(cartData);
             cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
             cartHelper.updateMiniCartItemsQty(cartStorage, '.minicart .items__number');
-            miniCart.renderMiniCart(cartObj, cartStorage.getItems(), productData);
-            cart.cartClassEventHandler(cartStorage.getItems(), ['.minicart-product-total', '.minicart-footer']);
+            miniCart.updateMiniCartUI(cartObj, cartStorage.getItems(), productData);
+            cart.appendCartMessageIfEmpty(cartStorage.getItems(), '.mini-cart-error-msg');
 
             setTimeout(() => {
                 getElement.single('.minicart-link')?.click();

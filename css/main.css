@@ -8342,7 +8342,6 @@
 
 body.product-page {
   background: url("../assets/images/retro_bg.jpg") no-repeat fixed center;
-  background-color: #f8dc06;
   background-size: cover;
 }
 body {
@@ -8378,6 +8377,11 @@ h2 {
   position: absolute;
   right: -13px;
   top: -13px;
+}
+
+.footer .copyright {
+  letter-spacing: 1px;
+  margin-bottom: 0;
 }
 
 a,
@@ -8600,7 +8604,18 @@ button a {
 }
 
 .cart-empty-msg {
+  padding: 1rem;
   text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .cart-empty-msg {
+    padding: 0;
+  }
+}
+.cart-empty-msg .empty-cart-btn::before {
+  content: "\f053";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
 }
 
 .product-line-item-summary {
@@ -8701,6 +8716,7 @@ button a {
 }
 .cart .main-col {
   margin-bottom: 1rem;
+  padding: 0;
 }
 @media screen and (min-width: 768px) {
   .cart .main-col {
@@ -8717,15 +8733,29 @@ button a {
   }
 }
 .cart .line-item-detail,
-.cart .line-item-details-image,
-.cart .cart-item-cta {
+.cart .line-item-details-image {
   padding: 0 1rem;
 }
-.cart .line-item-details-image {
-  padding-left: 0;
+.cart .cart-item-cta {
+  padding: 0 1rem 1rem;
 }
-.cart .line-item-detail {
-  padding-right: 0;
+.cart .cart-item-cta:not(.aside-mobile-col) {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .cart .cart-item-cta:not(.aside-mobile-col) {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .cart .line-item-details-image {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .cart .line-item-detail {
+    padding-right: 0;
+  }
 }
 .cart .product-line-item-details .line-item-details-image .line-item-image-wrapper {
   padding: 12px;
@@ -8733,16 +8763,30 @@ button a {
 }
 .cart .cart-item-list {
   background: #f4f4f4;
-  padding-bottom: 1rem;
 }
 .cart .cart-footer {
   background: #f4f4f4;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .cart .cart-footer {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .cart .aside-mobile-col {
+    display: none;
+  }
 }
 .cart .aside-mobile-col .checkout-continue {
+  background-color: #ffffff;
   bottom: 0;
   left: 0;
   padding: 20px;
   position: fixed;
+}
+.cart .cart-empty-msg {
+  text-align: left;
 }
 
 /*# sourceMappingURL=main.css.map */
