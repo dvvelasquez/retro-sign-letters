@@ -8,6 +8,10 @@ const getElement = {
     multiple: selector => document.querySelectorAll(selector)
 }
 
+/**
+ * Fetches the current full year
+ * @returns {String} The current year as string
+ */
 const getDate = () => {
     const currentDate = new Date().getFullYear();
     if (!currentDate) return;

@@ -9,7 +9,7 @@ const cart = {
      * @param {Object} cartObj - Cart object builder
      * @param {Object} cartStorage - The local storage object handler
      * @param {Object} productData - The product data selected product image info
-     * @param {Event} e - The current element target
+     * @param {MouseEvent} e - The click event on the remove button
      * @returns {void}
      */
      handleRemoveItem: (cartObj, cartStorage, productData, e) => {
@@ -36,6 +36,12 @@ const cart = {
 
         return updatedItems;
     },
+    /**
+     * If cart items > 0 show targeted elements otherwise hide them
+     * @param {Array<Object>} storedItems - the local Storage Obj
+     * @param {String} targetEl - The class selector of the target elements
+     * @returns {void}
+     */
     cartClassEventHandler: (storedItems, targetEl) => {
         const containers = getElement.multiple(targetEl);
         containers.forEach(container => {
@@ -48,8 +54,9 @@ const cart = {
     },
     /**
      * Displays the empty cart message if the cart is empty
-     * @param {Object} storedItems - The local storage object handler
+     * @param {Array<Object>} storedItems - The local storage object handler
      * @param {String} container - The class selector of the target element
+     * @returns {void}
      */
     appendCartMessageIfEmpty: (storedItems, container) => {
         const productSummaryWrapper = getElement.single(container);
@@ -79,7 +86,7 @@ const cart = {
         cart.cartClassEventHandler(storedItems, selector);
     },
     /**
-     * Calculates and renders cart pricing totals including GST
+     * Calculates and renders the cart pricing totals including GST
      * @param {Object} cartObj - Cart object builder
      * @param {Array<Object>} items - Current cart items
      * @param {Object} productData - Pricing and GST calculator
@@ -99,12 +106,26 @@ const cart = {
         totalAmountWrapper.innerHTML = '';
         totalAmountWrapper.insertAdjacentHTML('afterbegin', `$${items.length ? total.toFixed(2) : 0}`);
     },
+    /**
+     * Fetches the updated cart items from local storage
+     * and updates the pricing and quantities in the UI
+     * @param {Object} cartObj - Cart object builder
+     * @param {Object} cartStorage - The local storage object handler
+     * @param {Object} productData - The product data selected product image info
+     * @returns {void}
+     */
     getCartData: (cartObj, cartStorage, productData) => {
         const items = cartStorage.getItems();
         cart.getProductCost(cartObj, items, productData);
         cartHelper.updateCartQty(cartStorage, '.minicart-link .minicart-quantity');
         cartHelper.updateMiniCartItemsQty(cartStorage, ['.minicart .items__number', '.cart .items__number']);
     },
+    /**
+     * Renders the cart items HTML inside the target container
+     * @param {Array<Object>} items - Current cart items
+     * @param {String} container - The class selector of the target element
+     * @returns {void}
+     */
     getCartItems: (items, container) => {
         const productSummaryDetails = cartHelper.productDetailsTemplate(items);
         const productSummaryWrapper = getElement.single(container);
@@ -113,6 +134,13 @@ const cart = {
         productSummaryWrapper.innerHTML = '';
         productSummaryWrapper.insertAdjacentHTML('afterbegin', productSummaryDetails);
     },
+    /**
+     * Renders the full cart including items, empty cart message, and pricing totals
+     * @param {Object} cartObj - Cart object builder
+     * @param {Object} cartStorage - The local storage object handler
+     * @param {Object} productData - The product data selected product image info
+     * @returns {void}
+     */
     renderCart: (cartObj, cartStorage, productData) => {
         const storedItems = cartStorage.getItems();
 

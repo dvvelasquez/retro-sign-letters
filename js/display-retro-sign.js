@@ -4,7 +4,8 @@ import { addToCartEventHandlers } from "./product/components/add-to-cart-event-h
 
 /**
  * Initialises and append into the UI the retro sign letter
- * @param {Object} configs - the retro sign configs
+ * @param {Object} retroSignConfigs - The retro sign configs
+ * @param {Object} retroTypeConfigs - The type of sign configs
  * @returns {Void}
  */
 const initRetroSignLetters = (retroSignConfigs, retroTypeConfigs) => {

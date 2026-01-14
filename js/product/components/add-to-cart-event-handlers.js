@@ -2,8 +2,9 @@ import { getElement } from "../../helper/dom-helper.js";
 
 const addToCartEventHandlers = {
     /**
-     * Add retro sign to cart and mini cart
+     * Initializes add-to-cart event handlers and button state
      * @param {NodeListOf<HTMLElement>} imgLetters - list of images elements
+     * @param {String} ctaContainer - The class selector of the target element
      * @param {String} addToCartBtn - The class selector of the target element
      * @returns {void}
      */
@@ -17,20 +18,17 @@ const addToCartEventHandlers = {
         addToCartEventHandlers.showHidePriceContainer(retroSignImages, ctaWrapper);
     },
     /**
-     * Set add to cart button Attributes
+     * Sets availability-related data attributes on the add-to-cart button
      * @param {NodeListOf<HTMLElement>} retroSignImages - list of images elements
-     * @param {String} addToCartBtn - The class selector of the target element
+     * @param {HTMLElement} addToCartBtn - The target html element
      * @returns {void}
      */
     setAddToCartButtonAttributes: (retroSignImages, addToCartBtn) => {
         const isItemAvailable = retroSignImages.length > 0 ? 'true' : 'false';
-        // data-button-added-text="Added"
         addToCartBtn.setAttribute('data-item-available', isItemAvailable);
-
-        // `data-button-adding-text="Adding..."`
     },
     /**
-     * 
+     * Shows or hides the add-to-cart container based on product availability
      * @param {NodeListOf<HTMLElement>} retroSignImages - the list of images appended
      * @param {HTMLElement} ctaWrapper - The HTML element container
      */
